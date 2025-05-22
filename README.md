@@ -110,7 +110,7 @@ tias_scraper/
 │   │   ├── tias_links_spider.py
 ├── urls.txt
 ├── debug_html/
-├── pdfs/              # Output directory for PDFs (if applicable)
+├── tias_scraped_data.csv
 ├── all_extracted_links.csv
 ├── requirements.txt
 ├── README.md
