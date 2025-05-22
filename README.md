@@ -91,7 +91,7 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
    ```bash
    scrapy crawl tias_pdf_spider -a urls_file=urls.txt
    ```
-   - Output (e.g., PDFs or text) is saved to a directory specified in the spider (check `tias_pdf_spider.py` for the path, typically `pdfs/`).
+   - Output (e.g., PDFs or text) is saved to `tias_scraped_data.csv`
 
 ### Notes
 - The spiders include a 45-second `DOWNLOAD_DELAY` and use Playwright to handle dynamic content. Expect runs to take time.
