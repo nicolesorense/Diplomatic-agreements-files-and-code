@@ -32,7 +32,7 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
 ## Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/tias_scraper.git
+   git clone https://github.com/nicolesorense/tias_scraper.git
    cd tias_scraper
    ```
 
