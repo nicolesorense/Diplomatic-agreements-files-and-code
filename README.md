@@ -32,8 +32,8 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
 ## Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/nicolesorense/diplomatic_agreements.git
-   cd diplomatic_agreements
+   git clone https://github.com/nicolesorense/diplomatic-agreements.git
+   cd diplomatic-agreements
    ```
 
 2. **Set Up a Virtual Environment** (recommended):
@@ -52,8 +52,12 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
      playwright install
      ```
 
-4. **Initialize the Project**:
-   - Ensure the project directory contains the spiders and settings as outlined in the [Project Structure](#project-structure) section.
+4. **Fix Project Structure** (if needed):
+   - The `scrapy.cfg` file must be in the root directory (not inside `tias_scraper/`).
+   - If `scrapy.cfg` is inside `tias_scraper/`, move it:
+     ```bash
+     mv tias_scraper/scrapy.cfg .
+     ```
 
 ## Configuration
 - **Settings**: Edit `tias_scraper/settings.py` to customize behavior:
@@ -99,24 +103,39 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
 
 ## Project Structure
 ```
-diplomatic_agreements/
-├── tias_scraper/
+diplomatic-agreements/
+├── scrapy.cfg                              # Scrapy configuration (must be at root level)
+├── requirements.txt                        # Python dependencies
+├── README.md
+├── treaty_years.csv                        # Input data for treaty years
+├── tias_links_spider.py                    # Spider source (reference copy)
+├── tias_pdf_spider.py                      # Spider source (reference copy)
+├── Copy of Updated_states_and_organizations...  # Supporting data
+├── tias_scraped_data.csv                   # Output from PDF spider
+├── tias_scraper/                           # Scrapy project package
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── middlewares.py
-│   ├── spiders/
-│   │   ├── __init__.py
-│   │   ├── tias_pdf_spider.py
-│   │   ├── tias_links_spider.py
-├── urls.txt
-├── debug_html/
-├── tias_scraped_data.csv
-├── all_extracted_links.csv
-├── requirements.txt
-├── README.md
+│   ├── items.py
+│   ├── pipelines.py
+│   └── spiders/
+│       ├── __init__.py
+│       ├── tias_links_spider.py
+│       └── tias_pdf_spider.py
+├── urls.txt                                # Generated URL list (after Step 1)
+├── all_extracted_links.csv                 # Generated links (after Step 1)
+└── debug_html/                             # Debug HTML files
 ```
 
+**Important**: The `scrapy.cfg` file must be at the root level of the project for Scrapy to recognize the project. If you see "no active project" errors, ensure `scrapy.cfg` is not inside the `tias_scraper/` folder.
+
 ## Troubleshooting
+- **"No active project" or "Unknown command: crawl"**: 
+  - Make sure you're in the `diplomatic-agreements/` directory (not inside `tias_scraper/`).
+  - Ensure `scrapy.cfg` is at the root level, not inside `tias_scraper/`.
+  - Run `scrapy list` to verify spiders are detected.
+- **ModuleNotFoundError: No module named 'tias_scraper'**:
+  - Move `scrapy.cfg` to the root directory: `mv tias_scraper/scrapy.cfg .`
 - **Timeout Errors**: Increase `PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT` in `settings.py` or add scrolling triggers in `start_requests`:
   ```python
   PageMethod('evaluate', 'window.scrollTo(0, document.body.scrollHeight)'),
