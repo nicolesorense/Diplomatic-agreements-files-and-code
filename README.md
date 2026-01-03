@@ -32,8 +32,8 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
 ## Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/nicolesorense/tias_scraper.git
-   cd tias_scraper
+   git clone https://github.com/nicolesorense/diplomatic_agreements.git
+   cd diplomatic_agreements
    ```
 
 2. **Set Up a Virtual Environment** (recommended):
@@ -99,7 +99,7 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
 
 ## Project Structure
 ```
-tias_scraper/
+diplomatic_agreements/
 ├── tias_scraper/
 │   ├── __init__.py
 │   ├── settings.py
