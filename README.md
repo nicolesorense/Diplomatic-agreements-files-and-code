@@ -69,7 +69,7 @@ A Scrapy-based web scraper designed to extract diplomatic agreement links and th
     })
     PROXIES = ['http://your-proxy:port']
     ```
-- **Treaty Years**: The spider uses `treaty_years.csv` (fetched from https://raw.githubusercontent.com/nicolesorense/Diplomatic-agreements-files-and-code/refs/heads/main/treaty_years.csv). Update this file locally if needed.
+- **Treaty Years**: The spider uses `treaty_years.csv` (fetched from https://raw.githubusercontent.com/nicolesorense/diplomatic-agreements/refs/heads/main/treaty_years.csv). Update this file locally if needed.
 
 ## Usage
 ### Step 1: Extract Agreement Links
